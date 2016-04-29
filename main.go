@@ -70,7 +70,7 @@ func setupConfig() {
 	cfg, _ = google.JWTConfigFromJSON([]byte(confFile), vision.CloudPlatformScope)
 }
 
-func hanaInfo(w http.ResponseWriter, r *http.Request) {
+func photoInfo(w http.ResponseWriter, r *http.Request) {
 	ctx := appengine.NewContext(r)
 	client := cfg.Client(ctx)
 	svc, _ := vision.New(client)
@@ -119,5 +119,5 @@ func init() {
 	if os.Getenv("BASIC_AUTH_USER") != "" && os.Getenv("BASIC_AUTH_PASSWORD") != "" {
 		goji.Use(BasicAuth)
 	}
-	goji.Post("/hana/info", hanaInfo)
+	goji.Post("/photo/info", photoInfo)
 }
