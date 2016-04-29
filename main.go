@@ -105,7 +105,7 @@ func photoInfo(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	response, err := json.MarshalIndent(res.Responses[0], "", "\t")
+	response, err := json.MarshalIndent(res.Responses[0].LabelAnnotations, "", "\t")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
